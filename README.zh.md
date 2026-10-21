@@ -532,6 +532,8 @@ dsh plugin --profile web add dshmarket
 - [HumXC/dsh-nestquay](https://github.com/HumXC/dsh-nestquay) — 为 DSH 侧栏提供工作区分组、组间导航和会话状态提示。
 - [hunter118/dsh-s7r](https://github.com/hunter118/dsh-s7r) — 为 DeepSeek Harness 提供复古 macOS System 7 风格工作站界面，包含桌面窗口、工作区与 Agent 管理、Finder、终端、监视器、上下文工具和桌面附件。
 - [Huuuuung/dsh-artifact-index](https://github.com/Huuuuung/dsh-artifact-index) — 为 dsh-artifacts 侧边栏补上缺失的后端，提供 /report 产物索引与预览所需的文件内容。
+- [HwFee/HwFee-dsh#genui](https://github.com/HwFee/HwFee-dsh/tree/master/plugins/genui) — 生成式 UI：模型调用 render_ui 写一段 React，回答就地渲染成可交互卡片。代码在插件自己的沙箱里求值，网络、定时器、模块加载与 DOM 全局均被屏蔽；卡片崩溃时退回源码。
+- [HwFee/HwFee-dsh#predict](https://github.com/HwFee/HwFee-dsh/tree/master/plugins/predict) — 下一句：每轮回答后预测你的下一条输入，以浅灰 ghost 文本显示在输入框。按 Tab 填入但不发送，预测模型可选。
 - [HwFee/HwFee-dsh#system-fonts](https://github.com/HwFee/HwFee-dsh/tree/master/plugins/system-fonts) — 内容、代码与终端文字各一个字体槽，另加行距与字距。只改排印，不动配色。
 - [hyperion2144/dsh-desktop-tauriapp](https://github.com/hyperion2144/dsh-desktop-tauriapp) — 把 DeepSeek Harness 封装成 Tauri 2 桌面应用（macOS + Windows，安装包见仓库 Releases，内置 dsh 运行时）：托盘常驻启动器（按 profile 分端口与窗口）、最多自愈 3 次的进程守护、本地或远程 dsh、带 Dock 角标的任务完成通知、实时启动控制台。本插件是该应用的页面内半区——桌面 chrome 与通知桥只在 DSH 运行于桌面应用内时生效；在普通 DSH 里用 `dsh plugin add` 安装时，提供的是随附的「把 DSH Web GUI 打包成 Tauri 应用」技能。
 - [hyrinx/dsh-plugin-open-with](https://github.com/hyrinx/dsh-plugin-open-with) — 在 DeepSeek Harness Web 会话头部添加胶囊拆分按钮，一键在当前工作区打开 VS Code、终端和文件资源管理器。
@@ -3205,6 +3207,7 @@ dsh plugin --profile web add dshmarket
 - [huangfuren/dsh-localsend](https://github.com/huangfuren/dsh-localsend) — 在 DSH 对话中通过 LocalSend v2 协议把文件/文件夹发到局域网内其它机器，或生成一次性浏览器下载链接（接收方无需安装任何软件）。零配置开箱即用，兼容 dsh 0.1.1-rc.2 与 0.1.3-alpha.1。
 - [huaxiren6/DSH-EmailReader](https://github.com/huaxiren6/DSH-EmailReader) — 面向密码认证被禁用邮箱的 OAuth2 IMAP 读取插件：微软 2024 年起停用个人 Outlook 的 IMAP 基本认证，本插件改用 refresh-token OAuth2（XOAUTH2）自动续期，Gmail 走应用密码并可选本地 HTTP/SOCKS 代理；工具注册为 ol_email_*，可与市场版 dsh-email 共存不撞名。
 - [huaxiren6/DSH-SmsWebhook](https://github.com/huaxiren6/DSH-SmsWebhook) — DSH 短信转发 webhook：手机端转发 App（短信转发器/Tasker 等）把短信 POST 到本地 HTTP 端点，插件落盘 JSONL 并暴露 sms_recent / sms_search 工具，让 agent 在任务中直接读取短信验证码；自动提取 4–8 位 OTP，支持关键词过滤，可走局域网或 Tailscale。
+- [HwFee/HwFee-dsh#git-bash](https://github.com/HwFee/HwFee-dsh/tree/master/plugins/git-bash) — Windows 上的 Git Bash 默认 shell。从 git --exec-path 定位 bash.exe（不用 WSL 的 bash），提供 run_shell 工具；找不到 Git Bash 时明确降级，而不是让插件消失。
 - [hyzyn/dsh-plugin-kit#codegraph](https://github.com/hyzyn/dsh-plugin-kit/tree/main/packages/codegraph) — DSH Web GUI 的 Codegraph 集成：设置 → 插件 中的「Codegraph」卡片提供索引状态、符号搜索、callers/callees/impact 查看与一键 sync/index；托管 codegraph MCP 服务器，并向 system prompt 注入 Codegraph 使用指引。需安装 codegraph CLI。
 - [hyzyn/dsh-plugin-kit#docker](https://github.com/hyzyn/dsh-plugin-kit/tree/main/packages/docker) — DSH Web GUI 的 Docker 容器面板：本机或 SSH 主机上的容器列表（可选含已停止）、docker inspect 详情、日志、stats 快照、镜像列表与一次性 exec——默认只读（启停删与 exec 均需显式开启权限），可经 tty 插件在面板底部就地打开容器终端。
 - [hyzyn/dsh-plugin-kit#loglens](https://github.com/hyzyn/dsh-plugin-kit/tree/main/packages/loglens) — DSH Web GUI 的日志查询卡片（Elasticsearch / OpenSearch）：一个查询面——按来源方言给查询串与可点例子、字段名补全、筛选芯片、可点柱缩放时间窗的时间分布、把分组的桶点成筛选、带级别染色与堆栈续行标记的结果列表（可选列、可翻页）；Docker 容器日志作为采集来源复用 docker 插件。agent 侧五个只读 loglens_* 工具（sources / search / fields / facets / context）与面板共用同一执行层。出站只打到已配置的来源，按解析后的 IP 判定，不跟随重定向，并有体积与超时上限。
